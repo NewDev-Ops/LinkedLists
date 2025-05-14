@@ -1,4 +1,4 @@
-
+from calendar import firstweekday
 #Creation of a singly linked list OOP implementation
 from symtable import *
 
@@ -12,6 +12,7 @@ class Linkedlist:
     def __init__(self):
         self.head = None
 
+    #Method to insert the head
     def inserthead(self, newdata):
         newnode = Node_OOP_implementation(newdata)
         newnode.next_address = self.head
@@ -33,6 +34,26 @@ class Linkedlist:
             last = last.next_address
         last.next_address = newnode
 
+    #Delete from the beginning
+    def delete_from_head(self):
+        if self.head is None:
+            return "The list is empty"
+        self.head = self.head.next_address
+
+    def delete_from_end(self):
+        first = self.head
+        if first is None:
+            print("The list is empty")
+
+        if first.next_address is None:
+            first.next_address = None
+            return
+
+        temp = first
+        while temp.next_address:
+            temp = temp.next_address
+        temp.next_address = None
+
     def printlist(self):
         temp = self.head
         while temp:
@@ -46,5 +67,6 @@ if __name__ == "__main__":
     llist.inserthead(5)
     llist.inserthead(0)
     llist.insertend(15)
+    llist.delete_from_head()
     llist.printlist()
 
