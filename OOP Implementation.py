@@ -41,16 +41,16 @@ class Linkedlist:
         self.head = self.head.next_address
 
     def delete_from_end(self):
-        first = self.head
-        if first is None:
+
+        if self.head is None:
             print("The list is empty")
 
-        if first.next_address is None:
-            first.next_address = None
+        if self.head.next_address is None:
+            self.head.next_address = None
             return
 
-        temp = first
-        while temp.next_address:
+        temp = self.head
+        while temp.next_address.next_address:
             temp = temp.next_address
         temp.next_address = None
 
@@ -68,5 +68,5 @@ if __name__ == "__main__":
     llist.inserthead(0)
     llist.insertend(15)
     llist.delete_from_head()
+    llist.delete_from_end()
     llist.printlist()
-
